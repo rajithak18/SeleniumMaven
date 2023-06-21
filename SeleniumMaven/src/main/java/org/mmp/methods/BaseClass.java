@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
@@ -27,6 +28,7 @@ public class BaseClass {
 		FileInputStream fis = new FileInputStream(f);
 		Properties pro = new Properties();
 		pro.load(fis);
+		System.out.println("mmp.properties successfully loaded");
 		
 	}
 	
@@ -55,6 +57,12 @@ public class BaseClass {
 		}
 		driver.manage().window().maximize(); 
 				
+	}
+	
+	@AfterClass
+	public void closeBrowser() {
+		
+		driver.quit();
 	}
 }
 

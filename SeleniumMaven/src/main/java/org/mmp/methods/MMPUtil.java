@@ -62,8 +62,13 @@ public class MMPUtil {
 	    //WebDriverWait wait = new WebDriverWait(driver, d);
 	   // wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ChangeHeatName")));
 	    
+	    By okStatus = By.id("status");
+	    WebElement okMessage = explicitTimeOut(driver,30,okStatus);
+	    System.out.println("Message in the pop-up" + okMessage);
+	    
 	    By continueButton = By.id("ChangeHeatName");
 	    WebElement continueWe = explicitTimeOut(driver,30,continueButton);
+	    continueWe.click();
 	    
 	    driver.findElement(By.id("ChangeHeatName")).click();
 	    driver.switchTo().defaultContent();
@@ -115,6 +120,11 @@ public class MMPUtil {
 		}
 		String expectedTime=driver.findElement(By.id("time")).getAttribute("value");
 		sHMap.put("time", expectedTime);
+		
+		By continueButton = By.id("ChangeHeatName");
+	    WebElement continueWe = explicitTimeOut(driver,30,continueButton);
+	    continueWe.click();
+		
 		driver.findElement(By.id("ChangeHeatName")).click();
 		driver.switchTo().defaultContent();
 		driver.findElement(By.id("sym")).click();

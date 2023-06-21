@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
@@ -22,7 +23,18 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class ScheduleAppointmentTests extends BaseClass {
 	
 	public WebDriver driver;
-	  
+	MMPUtil mmpUtil;
+	
+	@BeforeMethod
+	public void preRequisite() {
+			
+		   mmpUtil = new MMPUtil(driver);
+		    mmpUtil.launchBrowser(pro.getProperty("patientURL"));
+		    HelperClass helperObj =  new HelperClass(driver);
+		    helperObj.login(pro.getProperty("patientUsername"), pro.getProperty("patientPassword"));
+					
+	}
+	
 	  @BeforeClass
 	  public void instantiateDriver() {
 		  
@@ -33,15 +45,11 @@ public class ScheduleAppointmentTests extends BaseClass {
 	    
 	  }
 	  
-	  @Parameters({"url","username","password","drName"})
+	  @Parameters({"drName"})
 	  @Test
-	  public void TC_001_validateScheduleAppointment(String url,String username,String password,String drName) {
+	  public void TC_001_validateScheduleAppointment(String drName) {
 	    
-		    MMPUtil mmpUtil = new MMPUtil(driver);
-		    mmpUtil.launchBrowser(url);
-		    HelperClass helperObj =  new HelperClass(driver);
-		    helperObj.login(username, password);
-			
+		   
 		    HashMap<String,String>  expectedHMap = mmpUtil.BookAppointment(drName);
 		    HashMap<String,String>  actualHMap = mmpUtil.FetchPatientData();
 		    
@@ -52,16 +60,11 @@ public class ScheduleAppointmentTests extends BaseClass {
 		    
 		}
 	    
-	    @Parameters({"url","username","password","drName"})
+	    @Parameters({"drName"})
 		@Test
-		public void TC_003_validateScheduleAppointment(String url,String username,String password,String drName) {
+		public void TC_003_validateScheduleAppointment(String drName) {
 		
-	    	MMPUtil mmpUtil = new MMPUtil(driver);
-			mmpUtil.launchBrowser(url);
-			
-			HelperClass helperObj =  new HelperClass(driver);
-		    helperObj.login(username, password);
-		    
+	    	
 			HashMap<String,String> expectedHMap = mmpUtil.bookAppointment(drName,10);
 			HashMap<String,String> actualHMap = mmpUtil.FetchPatientData();
 			
