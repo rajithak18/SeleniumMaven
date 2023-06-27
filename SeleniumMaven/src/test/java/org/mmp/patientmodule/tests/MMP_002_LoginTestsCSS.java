@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 
 public class MMP_002_LoginTestsCSS {
 
@@ -32,7 +33,10 @@ public class MMP_002_LoginTestsCSS {
 		driver.findElement(By.name("submit")).click();
 		String actual =driver.findElement(By.xpath("//h3[normalize-space()='Patient Portal']")).getText();
 		String expected="Patient Portal";
-		Assert.assertEquals(actual, expected);
+		//Assert.assertEquals(actual, expected);
+		Assertion a1  = new Assertion();
+	    a1.assertEquals(actual.trim(), expected);
+		
 		driver.findElement(By.xpath("//span[normalize-space()='Logout']")).click();	
 	
 	}

@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 
 
 public class MMP_002_LoginTests {
@@ -35,7 +36,10 @@ public class MMP_002_LoginTests {
 		driver.findElement(By.name("submit")).click();
 		String actual =driver.findElement(By.xpath("//h3[normalize-space()='Patient Portal']")).getText();
 		String expected="Patient Portal";
-		Assert.assertEquals(actual, expected);
+		//Assert.assertEquals(actual, expected);
+		Assertion a1  = new Assertion();
+	    a1.assertEquals(actual.trim(), expected);
+		
 		driver.findElement(By.xpath("//span[normalize-space()='Logout']")).click();	
 	
 	}
@@ -52,7 +56,9 @@ public class MMP_002_LoginTests {
 		Alert alrt = driver.switchTo().alert();
 		String actual =alrt.getText().trim();
 		String expected="Wrong username and password.";
-		Assert.assertEquals(actual, expected);
+		//Assert.assertEquals(actual, expected);
+		Assertion a1  = new Assertion();
+	    a1.assertEquals(actual.trim(), expected);
 		
 		
 	}	

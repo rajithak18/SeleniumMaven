@@ -24,9 +24,9 @@ public class BaseClass {
 	@BeforeTest
 	public void readPropertyFile() throws Exception {
 		
-		File f = new File("System.getProperty(\"user.dir\")+\"//config//mmp.properties\"");
+		File f = new File(System.getProperty("user.dir")+"//config//mmp.properties");
 		FileInputStream fis = new FileInputStream(f);
-		Properties pro = new Properties();
+	    pro = new Properties();
 		pro.load(fis);
 		System.out.println("mmp.properties successfully loaded");
 		
@@ -55,7 +55,7 @@ public class BaseClass {
 			 driver = new EdgeDriver();
 			
 		}
-		driver.manage().window().maximize(); 
+		//driver.manage().window().maximize(); 
 				
 	}
 	
@@ -65,4 +65,3 @@ public class BaseClass {
 		driver.quit();
 	}
 }
-

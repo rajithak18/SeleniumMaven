@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 
 public class OpenMRSLogin {
 
@@ -33,7 +34,10 @@ public class OpenMRSLogin {
 	String actual = driver.findElement(By.xpath("//h4[normalize-space()='Logged in as Jacob Gosselin MD (admin) at Inpatient Ward.")).getText();
 	String expected = "Logged in as Jacob Gosselin MD (admin) at Inpatient Ward.";
 	
-	Assert.assertEquals(actual.trim(), expected);
+	//Assert.assertEquals(actual.trim(), expected);
+	Assertion a1  = new Assertion();
+    a1.assertEquals(actual.trim(), expected);
+	
 	
 	System.out.println("Result as expected");
 	
