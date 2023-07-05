@@ -32,13 +32,12 @@ public class MMPHealthCare {
        
        driver.findElement(By.xpath("//input[@type='submit']")).click();
        
-	   	driver.findElement(By.xpath("//span[normalize-space()='Profile']")).click();
+	  driver.findElement(By.xpath("//span[normalize-space()='Profile']")).click();
 	   	
 	   	try {
-	   	WebElement readOnly = driver.findElement(By.xpath("//input[@readonly = 'readonly']"));	 	
-	    String readonly = readOnly.getAttribute("readonly");
+	   	boolean readOnly = driver.findElement(By.xpath("//input[@readonly = 'readonly']")).isEnabled();	 	
+	    //String readonly = readOnly.getAttribute("readonly");
 	   // Assert.assertNotNull(readonly);
-	    
 	    
 	    System.out.println("Licence field is read only");
 	   	}

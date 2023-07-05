@@ -31,14 +31,13 @@ public class CompareStockPrice {
 		
 		List<WebElement> trList= driver.findElements(By.xpath("//table[@class='dataTable']/tbody/tr"));
 		System.out.println("The size of the dynamic table : " + trList.size());
-		//table[@class='dataTable']/tbody/tr[3]/td
+		
 		List<WebElement> tdList= driver.findElements(By.xpath("//table[@class='dataTable']/tbody/tr[3]/td"));
 		System.out.println("The size of the dynamic table : " + tdList.size());
 				
-//			long price1 =  Long.parseLong(driver.findElement(By.xpath("//a[contains(text(),'Eureka Forbes')]/parent::td/following-sibling::td[2]")).getText());
-//		
+//			long price1 =  Long.parseLong(driver.findElement(By.xpath("//a[contains(text(),'Eureka Forbes')]/parent::td/following-sibling::td[2]")).getText());		
 //			long price2 =  Long.parseLong(driver.findElement(By.xpath("//a[contains(text(),'Jindal Saw')]/parent::td/following-sibling::td[2]")).getText());
-//								
+								
 		WebElement we1 = driver.findElement(By.xpath("//a[contains(text(),'Eureka Forbes')]/parent::td/following-sibling::td[2]"));
 		String price1 =  we1.getText();
 		System.out.println("Stock Price : " + price1);
@@ -46,9 +45,7 @@ public class CompareStockPrice {
 		WebElement we2 = driver.findElement(By.xpath("//a[contains(text(),'Jindal Saw')]/parent::td/following-sibling::td[2]"));
 		String price2 =  we2.getText();
 		System.out.println("Stock Price : " + price2);	
-		
-		
-			
+					
 			
 		}
 		

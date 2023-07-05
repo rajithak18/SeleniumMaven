@@ -14,18 +14,14 @@ public class FetchStockList {
 	public WebDriver driver;
 	
 	@Test
-	public void login()
-	{
-//		WebDriverManager.chromedriver().setup();
-//		WebDriver driver = new ChromeDriver();
+	public void login()	{
 		ChromeOptions co = new ChromeOptions();
 		co.addArguments("--remote-allow-origins=*");
    	    driver = new ChromeDriver(co);
 				
 		driver.get("https://money.rediff.com/gainers/bse/daily/groupa?src=gain_lose");
 		String stockDetails[]= {"TCS","Varun Beverages Ltd."};
-//		SoftAssert sa = new SoftAssert();
-//		boolean result = false;
+		
 		for(int i=0 ;i < stockDetails.length;i++)
 		{
 			System.out.println("stock Name" + stockDetails[i]);
