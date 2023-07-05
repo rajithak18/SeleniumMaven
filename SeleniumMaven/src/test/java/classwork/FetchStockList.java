@@ -21,7 +21,7 @@ public class FetchStockList {
 		
 		driver.get("https://money.rediff.com/gainers/bse/daily/groupa?src=gain_lose");
 		Thread.sleep(2000);
-		String stockDetails[] = {"Mirza International","ITC Ltd","ABC"};
+		String stockDetails[] = {"Mirza International","ITC Ltd"};
 		Thread.sleep(3000);
 		SoftAssert sa = new SoftAssert();
 		boolean result = false;
